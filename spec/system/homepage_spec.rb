@@ -25,7 +25,7 @@ RSpec.describe "Homepage" do
     visit "/"
 
     expect(page.status_code).to eq(200)
-    expect(page.title).to eq("Welcome to GOV.UK")
+    expect(page.title).to eq("Welcome to GOV.UH")
     expect(page).to have_css(".homepage-header__title")
     expect(page).not_to have_css(".homepage-inverse-header__title")
   end
