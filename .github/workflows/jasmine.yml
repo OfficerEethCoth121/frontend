@@ -23,7 +23,7 @@ jobs:
         run: |
           npm install --prefix "${RUNNER_TEMP}/govuk-components-yarn" --no-audit --no-fund --ignore-scripts yarn@1.22.22
           cd "$(bundle show govuk_publishing_components)"
-          node "${RUNNER_TEMP}/govuk-components-yarn/node_modules/yarn/bin/yarn.js" install --frozen-lockfile --ignore-scripts
+          YARN_IGNORE_PATH=1 node "${RUNNER_TEMP}/govuk-components-yarn/node_modules/yarn/bin/yarn.js" install --frozen-lockfile --ignore-scripts
           test -f node_modules/govuk-frontend/dist/govuk/_base.scss
 
       - name: Run Jasmine
