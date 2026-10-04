@@ -1,4 +1,3 @@
-require "rails_helper"
 require "digest"
 
 RSpec.describe "GOV.UH upstream Frontend homepage provenance" do
