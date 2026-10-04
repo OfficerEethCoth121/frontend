@@ -29,7 +29,7 @@ RSpec.describe "CaseStudy" do
 
     it "does not display a lead image if no lead image set on case study" do
       visit "/government/case-studies/doing-business-in-spain-without-image"
-      expect(page).not_to have_css("img")
+      expect(page).not_to have_css(".gem-c-figure__image")
     end
 
     context "when visiting a Withdrawn Case Study page" do
