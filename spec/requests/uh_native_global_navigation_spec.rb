@@ -11,11 +11,11 @@ RSpec.describe "Native GOV.UH global navigation", type: :request do
     get "/"
 
     expect(response).to have_http_status(:ok)
-    expect(response.body).to include('gem-c-layout-super-navigation-header')
-    expect(response.body).to include('data-module="super-navigation-mega-menu"')
-    expect(response.body).to include('id="super-navigation-menu-toggle"')
-    expect(response.body).to include('id="super-navigation-menu"')
-    expect(response.body).to include('id="super-search-menu"')
+    expect(response.body).to include("gem-c-layout-super-navigation-header")
+    expect(response.body).to include("data-module=\"super-navigation-mega-menu\"")
+    expect(response.body).to include("id=\"super-navigation-menu-toggle\"")
+    expect(response.body).to include("id=\"super-navigation-menu\"")
+    expect(response.body).to include("id=\"super-search-menu\"")
     expect(response.body).not_to include("govuh-menu-button")
     expect(response.body).not_to include("govuh-global-menu-panel")
   end
