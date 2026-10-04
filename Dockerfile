@@ -12,7 +12,12 @@ COPY package.json yarn.lock ./
 RUN npm install -g yarn@1.22.19 && yarn install --immutable
 # Git-pinned source gems do not include the npm files bundled in the published GOV.UK gem.
 # Install the original components' locked assets in their own source directory.
-RUN cd "$(bundle show govuk_publishing_components)" && YARN_IGNORE_PATH=1 node "$(npm root -g)/yarn/bin/yarn.js" install --frozen-lockfile --ignore-scripts
+RUN components_dir="$(bundle show govuk_publishing_components)" && \
+    mkdir -p /tmp/govuk-components-assets && \
+    cp "$components_dir/package.json" "$components_dir/yarn.lock" /tmp/govuk-components-assets/ && \
+    cd /tmp/govuk-components-assets && \
+    node "$(npm root -g)/yarn/bin/yarn.js" install --frozen-lockfile --ignore-scripts && \
+    cp -a node_modules "$components_dir/node_modules"
 COPY . .
 RUN bootsnap precompile --gemfile .
 RUN rails assets:precompile && rm -fr log
