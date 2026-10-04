@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-
 RSpec.describe "Native GOV.UH global navigation", type: :request do
   include ContentStoreHelpers
 
