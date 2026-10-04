@@ -39,6 +39,12 @@ jobs:
       - name: Setup Node
         uses: alphagov/govuk-infrastructure/.github/actions/setup-node@main
 
+      - name: Install locked shared publishing-component assets
+        run: |
+          cd "$(bundle show govuk_publishing_components)"
+          yarn install --frozen-lockfile --ignore-scripts
+          test -f node_modules/govuk-frontend/dist/govuk/_base.scss
+
       - name: Precompile assets
         uses: alphagov/govuk-infrastructure/.github/actions/precompile-rails-assets@main
 
