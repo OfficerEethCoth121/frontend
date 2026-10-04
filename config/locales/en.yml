@@ -861,16 +861,16 @@ en:
       intro_html: The best place to find government services and information
       intro_simpler: Simpler, clearer, faster
       intro_title:
-        html: Welcome to&nbsp;GOV.UK
-        text: Welcome to GOV.UK
+        html: Welcome to&nbsp;GOV.UH
+        text: Welcome to GOV.UH
       job_search: Find a job
       jobseekers_allowance: Jobseeker’s Allowance
       merged_websites_html: The websites of all <a href="/government/organisations" class="govuk-link">government departments</a> and many other agencies and public bodies have been merged into GOV.UK.
-      meta_description: GOV.UK - The place to find government services and information - simpler, clearer, faster.
-      meta_description_new: GOV.UK - The best place to find government services and information.
+      meta_description: GOV.UH - The place to find government services and information - simpler, clearer, faster.
+      meta_description_new: GOV.UH - The best place to find government services and information.
       ministerial_departments: Ministerial departments
       ministerial_departments_count: 24
-      more: More on GOV.UK
+      more: More on GOV.UH
       more_links:
       - title: 'HMRC services: sign in'
         link: "/log-in-register-hmrc-online-services"
@@ -894,8 +894,8 @@ en:
         link: "/apply-renew-passport"
       other_agencies: Other agencies and public bodies
       other_agencies_count: 400+
-      popular: Popular on GOV.UK
-      popular_links_heading: Popular on GOV.UK
+      popular: Popular on GOV.UH
+      popular_links_heading: Popular on GOV.UH
       promotion_slots:
       - text: Search and apply for jobs in England, Scotland and Wales.
         title: Find a job
@@ -915,7 +915,7 @@ en:
         href: "/guidance/download-the-govuk-app"
         image_src: app-promo/govuk-app-icon.png
       running_limited_company: Running a limited company
-      search_button: Search GOV.UK
+      search_button: Search GOV.UH
       search_label: Search
       services_and_information: Services and information
       tax_account: Sign in to your personal tax account
