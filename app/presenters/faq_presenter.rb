@@ -26,8 +26,8 @@ class FaqPresenter < ContentItemPresenter
       "description" => content_item[:description],
       "publisher" => {
         "@type" => "Organization",
-        "name" => "GOV.UK",
-        "url" => "https://www.gov.uk",
+        "name" => "GOV.UH",
+        "url" => "https://www.gov.uhrblx.com",
         "logo" => {
           "@type" => "ImageObject",
           "url" => logo_url,
