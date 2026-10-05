@@ -15,8 +15,8 @@ concurrency:
 
 jobs:
   build-native-frontend:
-    name: Build original Frontend image (linux/amd64)
-    runs-on: ubuntu-24.04
+    name: Build original Frontend image (linux/arm64)
+    runs-on: ubuntu-24.04-arm
     timeout-minutes: 30
     steps:
       - name: Checkout this source revision
@@ -37,13 +37,13 @@ jobs:
         with:
           context: .
           file: Dockerfile
-          platforms: linux/amd64
+          platforms: linux/arm64
           pull: true
           push: false
           load: true
           tags: native-frontend-acceptance:${{ github.sha }}
-          cache-from: type=gha,scope=frontend-native-amd64
-          cache-to: type=gha,mode=max,scope=frontend-native-amd64
+          cache-from: type=gha,scope=frontend-native-arm64
+          cache-to: type=gha,mode=max,scope=frontend-native-arm64
           provenance: false
 
       - name: Inspect the original compiled Rails assets
