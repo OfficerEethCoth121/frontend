@@ -27,12 +27,14 @@ jobs:
       RUBY_CHECKSUM: 837d299e8f7ddf2be31a229a7a7e019d354979825117989acb3b32b1a9be262a
       BASE_IMAGE: govuk-ruby-base-source:4.0.6-amd64
       BUILDER_IMAGE: govuk-ruby-builder-source:4.0.6-amd64
-      FRONTEND_IMAGE: govuh-frontend-native-source:${{ github.sha }}-amd64
+      SOURCE_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+      FRONTEND_IMAGE: govuh-frontend-native-source:${{ github.event.pull_request.head.sha || github.sha }}-amd64
 
     steps:
       - name: Checkout Frontend source
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
+          ref: ${{ env.SOURCE_SHA }}
           persist-credentials: false
 
       - name: Checkout pinned GOV.UK Ruby image source
@@ -106,7 +108,7 @@ jobs:
       - name: Upload short-lived candidate artefact
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
-          name: govuh-frontend-native-amd64-${{ github.sha }}
+          name: govuh-frontend-native-amd64-${{ env.SOURCE_SHA }}
           path: candidate-artifact/
           if-no-files-found: error
           retention-days: 1
