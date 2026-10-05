@@ -1,0 +1,29 @@
+name: Build signed native Frontend candidate
+
+# Retain GOV.UK's original container build and supply-chain process.
+# A PR candidate is never a production promotion or an Argo deployment.
+on:
+  pull_request:
+
+permissions:
+  contents: read
+  packages: write
+  id-token: write
+
+concurrency:
+  group: frontend-signed-candidate-${{ github.event.pull_request.head.sha }}
+  cancel-in-progress: true
+
+jobs:
+  build-signed-candidate:
+    if: github.event.pull_request.head.repo.full_name == github.repository
+    uses: alphagov/govuk-infrastructure/.github/workflows/build-push-arm-image.yml@f6ec831212789f8a1d94e4c3136b07f16b71b3cf
+    with:
+      imageName: frontend
+      gitRef: ${{ github.event.pull_request.head.sha }}
+      runnerName: ubuntu-24.04-arm
+      generateProvenance: true
+      generateSbom: true
+      signImage: true
+      additionalTags: |
+        type=raw,value=uh-pr-${{ github.event.pull_request.number }}-${{ github.event.pull_request.head.sha }}

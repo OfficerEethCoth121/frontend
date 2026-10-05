@@ -1,0 +1,115 @@
+name: Native Frontend AMD64 source acceptance
+
+# Proves that the current x86-64 OVH architecture can run the original GOV.UK
+# Frontend source without substituting custom application code. The GOV.UK Ruby
+# base/builder images are built from a pinned original upstream source revision.
+# Nothing is deployed by this workflow. The final native image is exported only as a short-lived Actions artifact for controlled candidate transfer.
+on:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: native-frontend-amd64-source-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-native-amd64:
+    name: Build original GOV.UK Ruby images and Frontend (linux/amd64)
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    env:
+      RUBY_IMAGES_SHA: aed3fb2c9efd701a92c28604c6d325d90a163fe8
+      RUBY_MAJOR: "4.0"
+      RUBY_VERSION: "4.0.6"
+      RUBY_CHECKSUM: 837d299e8f7ddf2be31a229a7a7e019d354979825117989acb3b32b1a9be262a
+      BASE_IMAGE: govuk-ruby-base-source:4.0.6-amd64
+      BUILDER_IMAGE: govuk-ruby-builder-source:4.0.6-amd64
+      SOURCE_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+      FRONTEND_IMAGE: govuh-frontend-native-source:${{ github.event.pull_request.head.sha || github.sha }}-amd64
+
+    steps:
+      - name: Checkout Frontend source
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ env.SOURCE_SHA }}
+          persist-credentials: false
+
+      - name: Checkout pinned GOV.UK Ruby image source
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          repository: alphagov/govuk-ruby-images
+          ref: ${{ env.RUBY_IMAGES_SHA }}
+          path: .govuk-ruby-images
+          persist-credentials: false
+
+      - name: Set up Docker Engine
+        uses: docker/setup-docker-action@2bf61fb9464cc67f0cbdeabed6aa0380accd1c70 # v5.5.0
+        with:
+          version: version=29.7.1
+
+      - name: Build pinned original GOV.UK Ruby base image for AMD64
+        run: |
+          set -euo pipefail
+          docker build --platform linux/amd64 \
+            --file .govuk-ruby-images/base.Dockerfile \
+            --build-arg "RUBY_MAJOR=$RUBY_MAJOR" \
+            --build-arg "RUBY_VERSION=$RUBY_VERSION" \
+            --build-arg "RUBY_CHECKSUM=$RUBY_CHECKSUM" \
+            --tag "$BASE_IMAGE" \
+            .govuk-ruby-images
+
+      - name: Build pinned original GOV.UK Ruby builder image for AMD64
+        run: |
+          set -euo pipefail
+          docker build --platform linux/amd64 \
+            --file .govuk-ruby-images/builder.Dockerfile \
+            --build-arg "BASE_IMAGE_REF=$BASE_IMAGE" \
+            --build-arg "OWNER=alphagov" \
+            --tag "$BUILDER_IMAGE" \
+            .govuk-ruby-images
+
+      - name: Build unchanged native Frontend Dockerfile for AMD64
+        run: |
+          set -euo pipefail
+          docker build --platform linux/amd64 \
+            --file Dockerfile \
+            --build-arg "base_image=$BASE_IMAGE" \
+            --build-arg "builder_image=$BUILDER_IMAGE" \
+            --tag "$FRONTEND_IMAGE" \
+            .
+
+      - name: Inspect native image, architecture and compiled shared components
+        run: |
+          set -euo pipefail
+          test "$(docker image inspect "$FRONTEND_IMAGE" --format '{{.Architecture}}')" = amd64
+          docker run --rm --entrypoint /bin/sh "$FRONTEND_IMAGE" -ec '
+            test -d public/assets
+            find public/assets -type f -name "*.css" | grep -q .
+            find public/assets -type f -name "*.js" | grep -q .
+            grep -R -l --include="*.css" "gem-c-search__input" public/assets >/dev/null
+            grep -R -l --include="*.css" "gem-c-search__submit" public/assets >/dev/null
+            crown="$(find public/assets -type f -name "uh_header_crown-*.png" -print -quit)"
+            test -n "$crown"
+            echo "293218916b282a75c89326fab581942fe1f46652a32d122c17d47c9545398675  $crown" | sha256sum -c -
+          '
+          docker image inspect "$FRONTEND_IMAGE" --format 'native_frontend={{.Id}} os={{.Os}} arch={{.Architecture}}'
+
+      - name: Export immutable AMD64 candidate
+        run: |
+          set -euo pipefail
+          mkdir -p candidate-artifact
+          docker save "$FRONTEND_IMAGE" | gzip -1 > candidate-artifact/govuh-frontend-native-amd64.tar.gz
+          sha256sum candidate-artifact/govuh-frontend-native-amd64.tar.gz > candidate-artifact/SHA256SUMS
+          docker image inspect "$FRONTEND_IMAGE" --format '{{.Id}} {{.Os}}/{{.Architecture}}' > candidate-artifact/IMAGE-IDENTITY
+
+      - name: Upload short-lived candidate artefact
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: govuh-frontend-native-amd64-${{ env.SOURCE_SHA }}
+          path: candidate-artifact/
+          if-no-files-found: error
+          retention-days: 1
+          compression-level: 0
