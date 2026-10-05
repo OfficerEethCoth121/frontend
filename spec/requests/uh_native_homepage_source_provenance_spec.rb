@@ -16,4 +16,29 @@ RSpec.describe "GOV.UH upstream Frontend homepage provenance" do
     expect(I18n.t("homepage.index.intro_title.text", locale: :en)).to eq("Welcome to GOV.UH")
     expect(I18n.t("homepage.index.services_and_information", locale: :en)).to eq("Services and information")
   end
+  it "keeps the GOV.UH homepage content free of inherited UK service material" do
+    category_titles = I18n.t("homepage.categories", locale: :en).map { |item| item[:title] }
+    expect(category_titles).to eq([
+      "Citizenship and living in Havenstead",
+      "Crime, justice and the law",
+      "Disabled people",
+      "Education and learning",
+      "Employing people",
+      "Infrastructure and local services",
+      "Money and public finance",
+      "Passports, travel and external affairs",
+      "Visas and immigration",
+      "Working, jobs and skills",
+    ])
+
+    homepage_text = [
+      I18n.t("homepage.categories", locale: :en),
+      I18n.t("homepage.index.more_links", locale: :en),
+      I18n.t("homepage.index.promotion_slots", locale: :en),
+      I18n.t("homepage.index.promotion_slots_secondary", locale: :en),
+    ].flatten.join(" ")
+
+    expect(homepage_text).not_to match(/HMRC|Universal Credit|State Pension|Self Assessment|MOT|GOV\.UK app|National Insurance|Cost of living support/)
+  end
+
 end
