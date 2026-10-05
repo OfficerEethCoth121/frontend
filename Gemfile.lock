@@ -1,7 +1,7 @@
 GIT
   remote: https://github.com/bravogov/govuk_publishing_components.git
-  revision: 629228713f971a28ac499a087d1c8d957b3291a1
-  ref: 629228713f971a28ac499a087d1c8d957b3291a1
+  revision: 67b30f742993fb92ed02a4741036eefdcb226a1f
+  ref: 67b30f742993fb92ed02a4741036eefdcb226a1f
   specs:
     govuk_publishing_components (70.2.0)
       chartkick
