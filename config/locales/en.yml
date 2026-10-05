@@ -787,34 +787,40 @@ en:
     categories:
     - title: Citizenship and living in Havenstead
       description: Citizenship, civic participation and services for life in Havenstead.
-      link: "/browse/citizenship-living-havenstead/"
+      link: "/browse/citizenship-living-havenstead"
     - title: Crime, justice and the law
       description: Crime, courts, tribunals, legal services and justice functions for which central Government is responsible.
-      link: "/browse/crime-justice-law/"
-    - title: Disabled people
+      link: "/browse/crime-justice-law"
+    - title: Disabled people and accessibility
       description: Disability equality, reasonable adjustments, work access and participation.
-      link: "/browse/disabled-people/"
+      link: "/browse/disabled-people"
     - title: Education and learning
       description: State Education, learning, qualifications and education standards in Havenstead.
-      link: "/browse/education-learning/"
+      link: "/browse/education-learning"
     - title: Employing people
       description: Employment relations, workforce responsibilities and workplace standards.
-      link: "/browse/employing-people/"
+      link: "/browse/employing-people"
     - title: Infrastructure and local services
       description: Infrastructure, councils, strategic authorities and local public services.
-      link: "/browse/infrastructure-local-services/"
-    - title: Money and public finance
+      link: "/browse/infrastructure-local-services"
+    - title: Money and tax
       description: Central public finance, payments, financial conduct and public-resource information.
-      link: "/browse/money-tax/"
-    - title: Passports, travel and external affairs
+      link: "/browse/money-tax"
+    - title: Passports, travel and living abroad
       description: Passports, travel information and central external-affairs services.
-      link: "/browse/travel-abroad/"
+      link: "/browse/travel-abroad"
     - title: Visas and immigration
       description: Entry, immigration, residence and settlement services.
-      link: "/browse/visas-immigration/"
+      link: "/browse/visas-immigration"
     - title: Working, jobs and skills
       description: Havenstead employment support, work access, skills and Civil Service careers.
-      link: "/browse/working-jobs-skills/"
+      link: "/browse/working-jobs-skills"
+    - title: Wellbeing, safeguarding and care
+      description: Wellbeing support, safeguarding and early help, and care and service quality.
+      link: "/browse/wellbeing-care"
+    - title: Government and democracy
+      description: Government and the Civil Service, Parliament and elections, and public bodies and participation.
+      link: "/browse/government-democracy"
     government_activity:
     - title: Departments
       description: Departments, agencies and public bodies
@@ -839,7 +845,7 @@ en:
       covid: 'Coronavirus (COVID-19): guidance'
       featured: Featured
       government_activity: Government activity
-      government_activity_description: Find out what the government is doing
+      government_activity_description: Find out what the Government is doing
       intro_html: The best place to find government services and information
       intro_simpler: Simpler, clearer, faster
       intro_title:
@@ -860,10 +866,12 @@ en:
         link: "/services/membership-immigration/apply/"
       - title: Civil Service careers
         link: "/government/civil-service-careers/"
+      - title: Ministerial expressions of interest
+        link: "/government/ministerial-expression-of-interest/"
       - title: Public sessions and activities
         link: "/government/guidance/public-sessions-and-activities/"
       - title: Departments, agencies and public bodies
-        link: "/government/organisations/"
+        link: "/government/organisations"
       - title: How government works
         link: "/government/how-government-works/"
       - title: News and communications
@@ -875,11 +883,14 @@ en:
       popular: Popular on GOV.UH
       popular_links_heading: Popular on GOV.UH
       promotion_slots:
+      - text: Find the current citizenship or immigration route for returning people.
+        title: Return to United Hampshire
+        href: "/services/membership-immigration/returning-to-united-hampshire/"
+        image_src: homepage/travel-advice-blue-icon-featured.png
       - text: Search genuine open Civil Service vacancies and apply.
         title: Civil Service careers
         href: "/government/civil-service-careers/"
         image_src: homepage/find-a-job.png
-      promotion_slots_secondary: []
       running_limited_company: Running a limited company
       search_button: Search GOV.UH
       search_label: Search
