@@ -34,13 +34,12 @@ RSpec.describe "GOV.UH upstream Frontend homepage provenance" do
       "Government and democracy",
     ])
 
-    homepage_text = [
-      I18n.t("homepage.categories", locale: :en),
-      I18n.t("homepage.index.more_links", locale: :en),
-      I18n.t("homepage.index.promotion_slots", locale: :en),
-      I18n.t("homepage.index.promotion_slots_secondary", locale: :en),
-    ].flatten.join(" ")
+    expect(I18n.t("homepage.index.more_links", locale: :en)).to eq([])
+    expect(I18n.t("homepage.index.promotion_slots", locale: :en)).to eq([])
+    expect(I18n.t("homepage.index.promotion_slots_secondary", locale: :en)).to eq([])
 
+    homepage_text = I18n.t("homepage.categories", locale: :en).flatten.join(" ")
+    expect(homepage_text).not_to match(/Return to United Hampshire|Civil Service careers|membership-immigration|ministerial-expression-of-interest|public-sessions-and-activities/)
     expect(homepage_text).not_to match(/HMRC|Universal Credit|State Pension|Self Assessment|MOT|GOV\.UK app|National Insurance|Cost of living support/)
   end
 end
