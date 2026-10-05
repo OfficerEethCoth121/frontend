@@ -891,6 +891,7 @@ en:
         title: Civil Service careers
         href: "/government/civil-service-careers/"
         image_src: homepage/find-a-job.png
+      promotion_slots_secondary: []
       running_limited_company: Running a limited company
       search_button: Search GOV.UH
       search_label: Search
