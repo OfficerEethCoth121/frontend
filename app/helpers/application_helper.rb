@@ -5,7 +5,7 @@ module ApplicationHelper
   end
 
   def build_page_title(elements = [], withdrawn: false)
-    title = (elements + ["GOV.UK"]).compact.join(" - ")
+    title = (elements + ["GOV.UH"]).compact.join(" - ")
     withdrawn ? "[Withdrawn] #{title}" : title
   end
 
