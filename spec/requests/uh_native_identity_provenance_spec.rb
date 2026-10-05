@@ -37,4 +37,34 @@ RSpec.describe "GOV.UH native shared identity", type: :request do
     expect(response.body).not_to include("govuk-header-crown-white.svg")
     expect(response.body).not_to include('aria-label="GOV.UK"')
   end
+
+  it "renders the established UH homepage service taxonomy without inherited UK service promotions" do
+    get "/"
+    expect(response).to have_http_status(:ok)
+
+    [
+      "Citizenship and living in Havenstead",
+      "Crime, justice and the law",
+      "Disabled people and accessibility",
+      "Education and learning",
+      "Employing people",
+      "Infrastructure and local services",
+      "Money and tax",
+      "Passports, travel and living abroad",
+      "Visas and immigration",
+      "Working, jobs and skills",
+      "Wellbeing, safeguarding and care",
+      "Government and democracy",
+    ].each { |title| expect(response.body).to include(title) }
+
+    [
+      "HMRC services",
+      "Universal Credit",
+      "Check MOT history of a vehicle",
+      "Tax your vehicle",
+      "State Pension",
+      "Student finance",
+      "Get the GOV.UK app",
+    ].each { |legacy_service| expect(response.body).not_to include(legacy_service) }
+  end
 end
