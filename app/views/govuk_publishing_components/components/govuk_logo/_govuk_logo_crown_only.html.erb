@@ -1,0 +1,14 @@
+<%
+  classes ||= %w[govuk-header__logotype]
+%>
+
+<svg
+  focusable="false"
+  class="<%= classes.join(" ") %>"
+  xmlns="http://www.w3.org/2000/svg"
+  aria-hidden="true"
+  height="30"
+  width="32"
+  viewBox="0 0 32 30">
+  <image href="<%= asset_path "uh-header-crown.svg" %>" x="0" y="0" width="32" height="30" preserveAspectRatio="xMidYMid meet"></image>
+</svg>
