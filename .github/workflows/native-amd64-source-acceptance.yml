@@ -3,7 +3,7 @@ name: Native Frontend AMD64 source acceptance
 # Proves that the current x86-64 OVH architecture can run the original GOV.UK
 # Frontend source without substituting custom application code. The GOV.UK Ruby
 # base/builder images are built from a pinned original upstream source revision.
-# Nothing is pushed or deployed by this workflow.
+# Nothing is deployed by this workflow. The final native image is exported only as a short-lived Actions artifact for controlled candidate transfer.
 on:
   pull_request:
   workflow_dispatch:
@@ -94,3 +94,20 @@ jobs:
             echo "293218916b282a75c89326fab581942fe1f46652a32d122c17d47c9545398675  $crown" | sha256sum -c -
           '
           docker image inspect "$FRONTEND_IMAGE" --format 'native_frontend={{.Id}} os={{.Os}} arch={{.Architecture}}'
+
+      - name: Export immutable AMD64 candidate
+        run: |
+          set -euo pipefail
+          mkdir -p candidate-artifact
+          docker save "$FRONTEND_IMAGE" | gzip -1 > candidate-artifact/govuh-frontend-native-amd64.tar.gz
+          sha256sum candidate-artifact/govuh-frontend-native-amd64.tar.gz > candidate-artifact/SHA256SUMS
+          docker image inspect "$FRONTEND_IMAGE" --format '{{.Id}} {{.Os}}/{{.Architecture}}' > candidate-artifact/IMAGE-IDENTITY
+
+      - name: Upload short-lived candidate artefact
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: govuh-frontend-native-amd64-${{ github.sha }}
+          path: candidate-artifact/
+          if-no-files-found: error
+          retention-days: 1
+          compression-level: 0
