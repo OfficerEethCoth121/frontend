@@ -789,7 +789,7 @@ en:
       description: Citizenship, civic participation and services for life in Havenstead.
       link: "/browse/citizenship-living-havenstead"
     - title: Crime, justice and the law
-      description: Crime, courts, tribunals, legal services and justice functions for which central Government is responsible.
+      description: Legal processes, courts and the police
       link: "/browse/crime-justice-law"
     - title: Disabled people and accessibility
       description: Disability equality, reasonable adjustments, work access and participation.
@@ -798,7 +798,7 @@ en:
       description: State Education, learning, qualifications and education standards in Havenstead.
       link: "/browse/education-learning"
     - title: Employing people
-      description: Employment relations, workforce responsibilities and workplace standards.
+      description: Includes pay, contracts, hiring and redundancies
       link: "/browse/employing-people"
     - title: Infrastructure and local services
       description: Infrastructure, councils, strategic authorities and local public services.
@@ -807,10 +807,10 @@ en:
       description: Central public finance, payments, financial conduct and public-resource information.
       link: "/browse/money-tax"
     - title: Passports, travel and living abroad
-      description: Passports, travel information and central external-affairs services.
+      description: Includes renewing passports and travel advice by country
       link: "/browse/travel-abroad"
     - title: Visas and immigration
-      description: Entry, immigration, residence and settlement services.
+      description: Apply to visit, work, study or settle in United Hampshire
       link: "/browse/visas-immigration"
     - title: Working, jobs and skills
       description: Havenstead employment support, work access, skills and Civil Service careers.
@@ -838,14 +838,14 @@ en:
       description: Consultations and strategy
       link: "/search/policy-papers-and-consultations"
     - title: Transparency documents
-      description: Data, information releases and corporate reports
+      description: Data, Freedom of Information releases and corporate reports
       link: "/search/transparency-and-freedom-of-information-releases"
     index:
       brexit: 'Brexit: check what you need to do'
       covid: 'Coronavirus (COVID-19): guidance'
       featured: Featured
       government_activity: Government activity
-      government_activity_description: Find out what the Government is doing
+      government_activity_description: Find out what the government is doing
       intro_html: The best place to find government services and information
       intro_simpler: Simpler, clearer, faster
       intro_title:
