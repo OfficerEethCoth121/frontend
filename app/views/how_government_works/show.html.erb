@@ -90,7 +90,7 @@
             <%= link_to "Read more about the Prime Minister's Office, 10 Downing Street", "/government/organisations/prime-ministers-office-10-downing-street", class: "govuk-link" %>
           </p>
 
-          <% if content_item.current_prime_minister.present? && content_item.current_prime_minister.image["url"].present? %>
+          <% if content_item.current_prime_minister.present? && content_item.current_prime_minister.image&.dig("url").present? %>
             <%= render "govuk_publishing_components/components/figure", {
               src: content_item.current_prime_minister.image["url"],
               alt: content_item.current_prime_minister.image["alt_text"],
