@@ -46,7 +46,7 @@
               text: "Parliament",
             },
             {
-              href: "#history-uk-government",
+              href: "#history-of-government",
               text: "History of government",
             },
           ],
@@ -63,14 +63,14 @@
 
         <section class="govuk-!-margin-bottom-9 prime-minister">
           <%= render "govuk_publishing_components/components/heading", {
-            text: "The Prime Minister",
+            text: "The Chief Minister",
             font_size: "m",
             heading_level: 3,
             margin_bottom: 4,
           } %>
 
-          <p class="govuk-body">The <%= link_to("Prime Minister", "/government/ministers/prime-minister", class: "govuk-link") %> is the leader of His Majesty’s Government and is ultimately responsible for all policy and decisions.</p>
-          <p class="govuk-body">The Prime Minister also:</p>
+          <p class="govuk-body">The Chief Minister is Head of Government and leads the United Hampshire Government. The Lord Lieutenant appoints a Chief Minister who can command the confidence of the House of Commons.</p>
+          <p class="govuk-body">The Chief Minister also:</p>
 
           <%= render "govuk_publishing_components/components/list", {
             extra_spacing: true,
@@ -83,22 +83,17 @@
           } %>
 
           <% if content_item.current_prime_minister.present? %>
-            <p class="govuk-body">The Prime Minister is <%= link_to content_item.current_prime_minister.title, content_item.current_prime_minister.base_path, class: "govuk-link" %>.</p>
+            <p class="govuk-body">The Chief Minister is <%= link_to content_item.current_prime_minister.title, content_item.current_prime_minister.base_path, class: "govuk-link" %>.</p>
           <% end %>
 
           <p class="govuk-body govuk-!-margin-bottom-8">
-            <%= link_to "Read more about the Prime Minister's Office, 10 Downing Street", "/government/organisations/prime-ministers-office-10-downing-street", class: "govuk-link" %>
+            <%= link_to "Read more about the Chief Minister’s Office, 10 Harrington Court", "/government/organisations/chief-ministers-office-10-harrington-court", class: "govuk-link" %>
           </p>
 
-          <% if content_item.current_prime_minister.present? && content_item.current_prime_minister.image["url"].present? %>
+          <% if content_item.current_prime_minister.present? && content_item.current_prime_minister.image&.[]("url").present? %>
             <%= render "govuk_publishing_components/components/figure", {
               src: content_item.current_prime_minister.image["url"],
               alt: content_item.current_prime_minister.image["alt_text"],
-            } %>
-          <% else %>
-            <%= render "govuk_publishing_components/components/figure", {
-              src: image_path("how_government_works/10_downing_street.jpg"),
-              alt: "10 Downing Street",
             } %>
           <% end %>
         </section>
@@ -111,12 +106,9 @@
             margin_bottom: 4,
           } %>
 
-          <p class="govuk-body">The Cabinet is made up of the senior members of government. Every week during Parliament, members of the Cabinet (Secretaries of State from all departments and some other ministers) meet to discuss the most important issues for the government.</p>
+          <p class="govuk-body">The Cabinet is the senior collective decision-making body of the United Hampshire Government. Its members consider the main issues facing government and are collectively accountable through the constitutional arrangements.</p>
           <p class="govuk-body govuk-!-margin-bottom-8"><%= link_to("See who is in the Cabinet", "/government/ministers", class: "govuk-link") %></p>
 
-          <%= render "govuk_publishing_components/components/figure", {
-            src: image_path("how_government_works/cabinet_01.jpg"),
-          } %>
         </section>
       </section>
     </div>
@@ -137,8 +129,8 @@
             <div class="govuk-grid-column-one-half">
               <%= render "govuk_publishing_components/components/big_number", {
                 number: content_item.ministerial_role_counts["prime_minister"],
-                label: "Prime Minister",
-                href: "/government/ministers/prime-minister",
+                label: "Chief Minister",
+                href: "/government/ministers",
               } %>
             </div>
 
@@ -170,7 +162,7 @@
           </div>
         <% end %>
 
-        <p class="govuk-body">Ministers are chosen by the Prime Minister from the members of the House of Commons and House of Lords. They are responsible for the actions, successes and failures of their departments.</p>
+        <p class="govuk-body">Ministers are appointed under the constitutional arrangements and have responsibility for their assigned departments and functions. They are accountable to Parliament for the discharge of those responsibilities.</p>
         <p class="govuk-body"><%= link_to "See full list of ministers", "/government/ministers", class: "govuk-link" %></p>
       </section>
     </div>
@@ -206,7 +198,7 @@
               margin_bottom: 4,
             } %>
 
-            <p class="govuk-body">Some departments, like the <%= link_to "Ministry of Defence", "/government/organisations/ministry-of-defence", class: "govuk-link" %>, cover the  whole UK. Others don’t – the <%= link_to "Department for Work and Pensions", "/government/organisations/department-for-work-pensions", class: "govuk-link" %> doesn't cover Northern Ireland. This is because some aspects of government are devolved to Scotland, Wales and Northern Ireland.</p>
+            <p class="govuk-body">The United Hampshire Government carries out central functions for the Realm and central government functions for Havenstead. Hampshire County Government exercises devolved functions for Hampshire County within England.</p>
             <p class="govuk-body"><%= link_to "Non-ministerial departments", "/government/organisations#non_ministerial_departments", class: "govuk-link" %> are headed by senior civil servants and not ministers. They usually have a regulatory or inspection function like the Charity Commission.</p>
 
             <%= render "govuk_publishing_components/components/heading", {
@@ -217,7 +209,7 @@
             } %>
 
             <p class="govuk-body">These are part of government departments and usually provide government services rather than decide policy - which is done by the department that oversees the agency.</p>
-            <p class="govuk-body">An example is the <%= link_to "Driver and Vehicle Licensing Agency", "/government/organisations/driver-and-vehicle-licensing-agency", class: "govuk-link" %> (overseen by the <%= link_to "Department for Transport", "/government/organisations/department-for-transport", class: "govuk-link" %>).</p>
+            <p class="govuk-body">Their responsibilities, sponsoring departments and contact details are listed in the <%= link_to "government organisations directory", "/government/organisations", class: "govuk-link" %>.</p>
 
             <%= render "govuk_publishing_components/components/heading", {
               text: "Other public bodies",
@@ -226,11 +218,11 @@
               margin_bottom: 4,
             } %>
 
-            <p class="govuk-body">These have varying degrees of independence but are directly accountable to ministers. There are 4 types of non-departmental public bodies (NDPBs).</p>
-            <p class="govuk-body">Executive NDPBs do work for the government in specific areas - for example, the Environment Agency.</p>
-            <p class="govuk-body">Advisory NDPBs provide independent, expert advice to ministers - for example, the Committee on Standards in Public Life.</p>
-            <p class="govuk-body">Tribunal NDPBs are part of the justice system and have jurisdiction over a specific area of law - for example, the Competition Appeal Tribunal.</p>
-            <p class="govuk-body">Independent monitoring boards are responsible for the running of prisons and treatment of prisoners - for example, His Majesty's Inspectorate of Prisons.</p>
+            <p class="govuk-body">Non-departmental public bodies perform specific public functions with a degree of separation from ministerial departments. Their statutory functions, sponsorship and accountability arrangements depend on the body.</p>
+            <p class="govuk-body">Executive non-departmental public bodies carry out defined public functions and services.</p>
+            <p class="govuk-body">Advisory non-departmental public bodies provide specialist advice to ministers and departments.</p>
+            <p class="govuk-body">Tribunals exercise adjudicative functions independently in accordance with their jurisdiction and governing law.</p>
+            <p class="govuk-body">Independent monitoring bodies scrutinise the operation of services within their respective remits.</p>
           </div>
         </div>
 
@@ -277,21 +269,21 @@
           margin_bottom: 4,
         } %>
 
-        <p class="govuk-body">The Civil Service does the practical and administrative work of government. It is co-ordinated and managed by the Prime Minister, in their role as Minister for the Civil Service.</p>
-        <p class="govuk-body">Around half of all civil servants provide services direct to the public, including:</p>
+        <p class="govuk-body">The Civil Service provides permanent, impartial and professional support to the United Hampshire Government, its ministers and departments.</p>
+        <p class="govuk-body">Civil servants carry out administrative, policy and operational work, including:</p>
 
         <%= render "govuk_publishing_components/components/list", {
           extra_spacing: true,
           visible_counters: true,
           items: [
-            "paying benefits and pensions",
-            "running employment services",
-            "staffing prisons",
-            "issuing driving licences",
+            "supporting ministers and departments",
+            "administering government services",
+            "maintaining official information and records",
+            "supporting the work of public bodies",
           ],
         } %>
 
-        <p class="govuk-body">The <%= link_to "Civil Service", "/government/organisations/civil-service", class: "govuk-link" %> is on GOV.UK.</p>
+        <p class="govuk-body">The <%= link_to "Civil Service", "/government/organisations/civil-service", class: "govuk-link" %> is listed on GOV.UH.</p>
 
         <%= render "govuk_publishing_components/components/heading", {
           text: "Work for us",
@@ -300,7 +292,7 @@
           margin_bottom: 4,
         } %>
 
-        <p class="govuk-body"><%= link_to "Find and apply", "https://civilservicejobs.service.gov.uk/", class: "govuk-link" %> for vacancies in departments, executive agencies and non-departmental public bodies.</p>
+        <p class="govuk-body">For information about careers in the Civil Service, see the <%= link_to "Civil Service organisation page", "/government/organisations/civil-service", class: "govuk-link" %>. Departments and authorised recruitment services publish their vacancies and application arrangements.</p>
 
         <%= render "govuk_publishing_components/components/heading", {
           text: "Work with us",
@@ -309,7 +301,7 @@
           margin_bottom: 4,
         } %>
 
-        <p class="govuk-body"><%= link_to "Search Contracts Finder", "/contracts-finder/", class: "govuk-link" %> for any government contract over £10,000 and get details of all previous tenders.</p>
+        <p class="govuk-body">Government departments and public bodies publish procurement notices through the procurement arrangements applicable to their jurisdiction and functions.</p>
       </section>
 
       <section class="govuk-!-margin-bottom-9">
@@ -320,7 +312,7 @@
           margin_bottom: 4,
         } %>
 
-        <p class="govuk-body">Find out how to <%= link_to "get involved", "/government/get-involved/", class: "govuk-link" %> with the work of the government, such as through consultations and petitions.</p>
+        <p class="govuk-body">The Government publishes consultations and opportunities to comment on policy. Petitions and parliamentary participation are handled by <%= link_to "Parliament", "https://parliament.uhrblx.com/", class: "govuk-link" %> through its own services.</p>
       </section>
 
       <section class="govuk-!-margin-bottom-9">
@@ -352,7 +344,7 @@
         } %>
 
         <p class="govuk-body">These are bills which have been approved by the Commons, the Lords, and the King. The relevant government department is responsible for putting the act into practice.</p>
-        <p class="govuk-body"><%= link_to "Visit www.legislation.gov.uk", "https://www.legislation.gov.uk", class: "govuk-link", rel: "external" %></p>
+        <p class="govuk-body"><%= link_to "Read United Hampshire legislation", "https://legislation.gov.uhrblx.com/", class: "govuk-link", rel: "external" %></p>
       </section>
 
       <section class="govuk-!-margin-bottom-9">
@@ -370,9 +362,9 @@
           margin_bottom: 4,
         } %>
 
-        <p class="govuk-body">The Freedom of Information Act gives you the right to ask any public sector organisation for all the recorded information it has on any subject. Anyone can make a request for information – known as a Freedom of Information (or FOI) request.  There are no restrictions on your age, nationality or where you live.</p>
-        <p class="govuk-body"><%= link_to "How to make a freedom of information request", "/make-a-freedom-of-information-request", class: "govuk-link" %></p>
-        <p class="govuk-body"><%= link_to "See FOI releases on GOV.UK", "/search/transparency-and-freedom-of-information-releases?content_store_document_type=foi_release", class: "govuk-link" %></p>
+        <p class="govuk-body">Public bodies provide access to recorded information in accordance with the legislation and procedures that apply to them. Requests are handled by the authority responsible for holding the information.</p>
+        <p class="govuk-body">To ask for information, contact the public body concerned using its published information request arrangements.</p>
+        <p class="govuk-body"><%= link_to "See FOI releases on GOV.UH", "/search/transparency-and-freedom-of-information-releases?content_store_document_type=foi_release", class: "govuk-link" %></p>
 
         <%= render "govuk_publishing_components/components/heading", {
           text: "Statistics",
@@ -382,7 +374,7 @@
         } %>
 
         <p class="govuk-body">Government produces Official Statistics about most areas of public life. Statistics are used by people inside and outside government to make informed decisions and to measure the success of government policies and services. <%= link_to "Find out about the legislation", "/government/statistics/how-national-and-official-statistics-are-assured", class: "govuk-link" %> that governs the publication of UK national and Official Statistics.</p>
-        <p class="govuk-body"><%= link_to "See statistics publications on GOV.UK", "/search/research-and-statistics", class: "govuk-link" %></p>
+        <p class="govuk-body"><%= link_to "See statistics publications on GOV.UH", "/search/research-and-statistics", class: "govuk-link" %></p>
 
         <%= render "govuk_publishing_components/components/heading", {
           text: "Transparency",
@@ -403,7 +395,7 @@
           ],
         } %>
 
-        <p class="govuk-body"><%= link_to "See transparency releases on GOV.UK", "/search/transparency-and-freedom-of-information-releases?content_store_document_type=transparency", class: "govuk-link" %></p>
+        <p class="govuk-body"><%= link_to "See transparency releases on GOV.UH", "/search/transparency-and-freedom-of-information-releases?content_store_document_type=transparency", class: "govuk-link" %></p>
 
         <%= render "govuk_publishing_components/components/heading", {
           text: "Data",
@@ -412,7 +404,7 @@
           margin_bottom: 4,
         } %>
 
-        <p class="govuk-body">Putting data in people’s hands can help them have more of a say in the reform of public services. On <%= link_to "data.gov.uk", "https://data.gov.uk/", class: "govuk-link", rel: "external" %> you can easily find, review and use information about our country and communities - for example, to develop web applications.</p>
+        <p class="govuk-body">Government organisations publish data and information for public use where disclosure and re-use are permitted. Each organisation remains responsible for the accuracy, maintenance and publication of its datasets.</p>
       </section>
 
       <section class="govuk-!-margin-bottom-9">
@@ -423,8 +415,8 @@
           margin_bottom: 4,
         } %>
 
-        <p class="govuk-body">In <%= link_to "Scotland", "https://www.gov.scot/", class: "govuk-link", rel: "external" %>, <%= link_to "Wales", "https://www.gov.wales/", class: "govuk-link", rel: "external" %> and <%= link_to "Northern Ireland", "https://www.northernireland.gov.uk/", class: "govuk-link", rel: "external" %>, devolved governments are responsible for many domestic policy issues, and their Parliaments/Assemblies have law-making powers for those areas.</p>
-        <p class="govuk-body">Areas the Scottish Government, Welsh Government, and the Northern Ireland Executive are responsible for, include:</p>
+        <p class="govuk-body">The United Hampshire Realm comprises England and Havenstead. Hampshire County Government is responsible for the functions devolved to Hampshire County within England. Havenstead is directly governed by the United Hampshire Government for central government functions, with responsibilities also exercised by strategic and local authorities.</p>
+        <p class="govuk-body">Functions assigned to devolved or local government may include:</p>
 
         <%= render "govuk_publishing_components/components/list", {
           extra_spacing: true,
@@ -447,9 +439,9 @@
           margin_bottom: 4,
         } %>
 
-        <p class="govuk-body">Councils make and carry out decisions on local services. Many parts of England have 2 tiers of local government: county councils and district, borough or city councils.</p>
-        <p class="govuk-body">In some parts of the country, there’s just one tier of local government providing all the functions, known as a ‘unitary authority’. This can be a city, borough or county council – or it may just be called ‘council’. As well as these, many areas also have parish or town councils.</p>
-        <p class="govuk-body"><%= link_to "Understand how your council works", "/understand-how-your-council-works/types-of-council/", class: "govuk-link" %></p>
+        <p class="govuk-body">Councils carry out local services and exercise their statutory powers within their areas. The division of responsibilities follows the arrangements for each constituent country and local authority.</p>
+        <p class="govuk-body">Hampshire County Government, strategic authorities and local councils exercise their respective responsibilities in England. In Havenstead, the relevant strategic and local authorities deliver functions assigned to them.</p>
+        <p class="govuk-body"><%= link_to "See government departments and public bodies", "/government/organisations", class: "govuk-link" %> for the relevant central government organisations.</p>
       </section>
 
       <section class="govuk-!-margin-bottom-9">
@@ -473,27 +465,24 @@
         } %>
 
         <p class="govuk-body">
-          <%= link_to "Find out about how Parliament works", "https://www.parliament.uk/", class: "govuk-link", rel: "external" %>
+          <%= link_to "Find out how United Hampshire Parliament works", "https://parliament.uhrblx.com/", class: "govuk-link", rel: "external" %>
         </p>
 
-        <p class="govuk-body">Read The Official Report at <%= link_to "Hansard", "http://www.parliament.uk/business/publications/", class: "govuk-link", rel: "external" %></p>
+        <p class="govuk-body">Read the Official Report in <%= link_to "Hansard", "https://parliament.uhrblx.com/hansard/", class: "govuk-link", rel: "external" %>.</p>
       </section>
 
       <section>
         <%= render "govuk_publishing_components/components/heading", {
           text: "History of government",
-          id: "history-uk-government",
+          id: "history-of-government",
           font_size: "l",
           margin_bottom: 4,
         } %>
 
-        <p class="govuk-body">Britain has one of the oldest governments in the world. Find out more about how it has worked and who has shaped it in the <%= link_to "history", "/government/history", class: "govuk-link" %> section.</p>
-        <p class="govuk-body">Read about past Prime Ministers, Chancellors and Foreign Secretaries in <%= link_to "notable people", "/government/history#notable-people", class: "govuk-link" %>. Learn more about historic <%= link_to "government buildings", "/government/history#government-buildings", class: "govuk-link" %> on Whitehall and around the UK.</p>
-        <p class="govuk-body govuk-!-margin-bottom-8">You can also find links to <%= link_to "historical research", "/government/history#historical-research", class: "govuk-link" %>, documents and records.</p>
+        <p class="govuk-body">The history of United Hampshire and its institutions is recorded in official publications, parliamentary records and archives. <%= link_to "The National Archives", "https://nationalarchives.gov.uhrblx.com/research/", class: "govuk-link" %> provides research guidance and information on historical records.</p>
+        <p class="govuk-body">Parliament and the responsible public bodies maintain records of the decisions, proceedings and functions for which they are accountable. Archival records preserve evidence of earlier arrangements.</p>
+        <p class="govuk-body govuk-!-margin-bottom-8">You can <%= link_to "search the Archives catalogue", "https://nationalarchives.gov.uhrblx.com/catalogue/", class: "govuk-link" %> or consult its research guidance for information about available records.</p>
 
-        <%= render "govuk_publishing_components/components/figure", {
-          src: image_path("how_government_works/churchill_01.jpg"),
-        } %>
       </section>
     </div>
   </div>
