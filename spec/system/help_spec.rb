@@ -15,6 +15,8 @@ RSpec.describe "Help" do
       visit "/help"
 
       expect(page).to have_title("Help using GOV.UH")
+      expect(page).to have_text("About GOV.UH")
+      expect(page).not_to have_text("About GOV.UK")
       expect(page).to have_link(href: "/help/about-govuh")
       expect(page).to have_link(href: "/help/reuse-govuh-content")
       expect(page).not_to have_link(href: "/help/about-govuk")
