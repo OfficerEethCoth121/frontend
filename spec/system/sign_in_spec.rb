@@ -18,7 +18,7 @@ RSpec.describe "Sign in" do
 
       expect(page).to have_title("Sign in to a service")
 
-      expect(page).to have_text("Search GOV.UK for a service")
+      expect(page).to have_text("Search GOV.UH for a service")
       expect(page).to have_button("Search")
     end
 
