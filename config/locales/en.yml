@@ -382,7 +382,7 @@ en:
       pages_in_guide: Pages in this guide
       skip_contents: Skip contents
     how_government_works:
-      lead_paragraph: In the UK, the Prime Minister leads the government with the support of the Cabinet and ministers. You can find out <a href="#who-runs-government" class="govuk-link">who runs government</a> and <a href="#how-government-is-run" class="govuk-link">how government is run</a>, as well as learning about the <a href="#history-uk-government" class="govuk-link">history of government</a>.
+      lead_paragraph: In United Hampshire, the Chief Minister leads the government with the support of the Cabinet and ministers. Find out <a href="#who-runs-government" class="govuk-link">who runs government</a>, <a href="#how-government-is-run" class="govuk-link">how government is run</a> and about the <a href="#history-of-government" class="govuk-link">history of government</a>.
     html_publication:
       name:
         one: HTML Publication
@@ -391,7 +391,7 @@ en:
         available_at: This publication is available at %{url}
         copyright: "© Crown copyright %{year}"
         isbn: 'ISBN:'
-        licence_html: 'This publication is licensed under the terms of the Open Government Licence v3.0 except where otherwise stated. To view this licence, visit <a href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3">nationalarchives.gov.uk/doc/open-government-licence/version/3</a> or write to the Information Policy Team, The National Archives, Kew, London TW9 4DU, or email: <a href="mailto:psi@nationalarchives.gov.uk">psi@nationalarchives.gov.uk</a>.'
+        licence_html: 'This publication is available under the Open Government Licence v3.0 except where otherwise stated. See <a href="https://nationalarchives.gov.uhrblx.com/doc/open-government-licence/version/3/">the Open Government Licence</a> published by The National Archives.'
         third_party: Where we have identified any third party copyright information you will need to obtain permission from the copyright holders concerned.
     impact_assessment:
       name:
@@ -732,32 +732,32 @@ en:
     title: The page you're looking for is no longer available
   help:
     index:
-      about: About GOV.UK
+      about: About GOV.UH
       about_description: Information about the website and the team that are building it
       accessibility: Accessibility
       accessibility_description: Details of accessibility and help using the internet
-      beta: Beta services on GOV.UK
-      beta_description: How new services are developed on GOV.UK and what it means for users
+      beta: Beta services on GOV.UH
+      beta_description: How new services are developed on GOV.UH and what it means for users
       browsers: Browsers
       browsers_description: Information about browsers and how to upgrade yours
       cookies: Cookies
-      cookies_description: How cookies are used on GOV.UK and each cookie’s purpose
-      email: GOV.UK email notifications
-      email_description: How to create a GOV.UK email notification account and update your subscription preferences
-      find_out: Find out about GOV.UK, including the use of cookies, accessibility of the site, the privacy notice and terms and conditions of use.
+      cookies_description: How cookies are used on GOV.UH and each cookie’s purpose
+      email: GOV.UH email notifications
+      email_description: How to create a GOV.UH email notification account and update your subscription preferences
+      find_out: Find out about GOV.UH, including the use of cookies, accessibility of the site, the privacy notice and terms and conditions of use.
       privacy_notice: Privacy notice
-      privacy_notice_description: GOV.UK’s approach to users’ privacy
-      reuse_content: Reuse GOV.UK content
-      reuse_content_description: How to reuse GOV.UK content through APIs and site scraping
+      privacy_notice_description: GOV.UH’s approach to users’ privacy
+      reuse_content: Reuse GOV.UH content
+      reuse_content_description: Information about reusing GOV.UH content and available publishing data
       terms: Terms and conditions
-      terms_description: Information about the use of GOV.UK and liability
-      vulnerability: Report a vulnerability on a GOV.UK domain or subdomain
-      vulnerability_description: How to report a vulnerability on GOV.UK
+      terms_description: Information about using GOV.UH and its terms
+      vulnerability: Report a vulnerability on a GOV.UH domain or subdomain
+      vulnerability_description: How to report a vulnerability on GOV.UH
     sign_in:
       choose_service: Choose the service you want to sign in to.
       explanation: At the moment, there are separate accounts for signing in to different government services.
       most_viewed: Sign in to one of the most viewed services
-      search_for_a_service: Search GOV.UK for a service
+      search_for_a_service: Search GOV.UH for a service
       search_for_a_service_button: Search
       service_list_items:
       - text: HMRC services
@@ -915,7 +915,7 @@ en:
         href: "/guidance/download-the-govuk-app"
         image_src: app-promo/govuk-app-icon.png
       running_limited_company: Running a limited company
-      search_button: Search GOV.UK
+      search_button: Search GOV.UH
       search_label: Search
       services_and_information: Services and information
       tax_account: Sign in to your personal tax account

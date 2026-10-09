@@ -35,6 +35,8 @@ RSpec.describe "How Government Works" do
       visit base_path
 
       expect(page).to have_text("The Chief Minister")
+      expect(page).to have_text("In United Hampshire, the Chief Minister leads the government")
+      expect(page).not_to have_text("In the UK, the Prime Minister")
       expect(page).not_to have_css('img[src*="10_downing_street"]')
     end
 
